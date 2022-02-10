@@ -1,7 +1,7 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { DatePicker, LocalizationProvider } from '@mui/lab';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import { Box, Button, Stack, TextField } from '@mui/material';
 import HolidayCard from 'components/cards/HolidayCard';
 import { useNavigate } from 'react-router-dom';
 import { HolidayType } from 'shared/@types/Holidays';
@@ -43,32 +43,29 @@ const HolidaysList = ({ ...props }) => {
 				</Button>
 			</Stack>
 
-			{holidays.length > 0 ? (
-				<Box
-					sx={{
-						display: 'grid',
-						gridTemplateColumns: 'repeat(3, 1fr)',
-						gap: 3
-					}}
-				>
-					{holidays &&
-						holidays.map((holiday: HolidayType) => (
-							<HolidayCard
-								key={`${holiday.name
-									.toLowerCase()
-									.split(' ')
-									.join('-')}-${
-									holiday.date
-								}-${holiday.countryCode.toLowerCase()}`}
-								holiday={holiday}
-							/>
-						))}
-				</Box>
-			) : (
-				<Typography sx={{ textAlign: 'center' }} variant={'h5'}>
+			<Box
+				sx={{
+					display: 'grid',
+					gridTemplateColumns: 'repeat(3, 1fr)',
+					gap: 3
+				}}
+			>
+				{holidays &&
+					holidays.map((holiday: HolidayType) => (
+						<HolidayCard
+							key={`${holiday.name
+								.toLowerCase()
+								.split(' ')
+								.join('-')}-${
+								holiday.date
+							}-${holiday.countryCode.toLowerCase()}`}
+							holiday={holiday}
+						/>
+					))}
+			</Box>
+			{/* <Typography sx={{ textAlign: 'center' }} variant={'h5'}>
 					No holidays founded for this country!
-				</Typography>
-			)}
+				</Typography> */}
 		</>
 	);
 };

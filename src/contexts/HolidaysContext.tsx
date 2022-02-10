@@ -1,5 +1,11 @@
 import { getYear } from 'date-fns';
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import {
+	createContext,
+	ReactNode,
+	useCallback,
+	useEffect,
+	useState
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HolidaysType } from 'shared/@types/Holidays';
 import holidaysApi from 'shared/services/api';
@@ -33,7 +39,7 @@ export const HolidaysContextProvider = ({
 	const [holidays, setHolidays] = useState<HolidaysType>([]);
 	const [country, setCountry] = useState<string>('PT');
 
-	const getHolidays = async () => {
+	const getHolidays = useCallback(async () => {
 		try {
 			const { data } = await holidaysApi.get<HolidaysType>(
 				`${getYear(date!)}/${country.toUpperCase()}`
@@ -41,23 +47,16 @@ export const HolidaysContextProvider = ({
 			setHolidays(data);
 		} catch (error: any) {
 			if (error.response.status === 404) {
-				navigate('/404');
+				console.log('REDIRECT TO 404');
 			}
 
 			console.log(error);
 		}
-	};
+	}, [date, country]);
 
 	useEffect(() => {
 		getHolidays();
-
-		return () => {
-			setHolidays([]);
-			setDate(new Date());
-		};
-
-		// eslint-disable-next-line
-	}, [country]);
+	}, [getHolidays]);
 
 	const changeDate = (newDate: Date | null) => {
 		console.log(newDate);
