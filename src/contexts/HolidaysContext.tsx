@@ -6,7 +6,6 @@ import {
 	useEffect,
 	useState
 } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { HolidaysType } from 'shared/@types/Holidays';
 import holidaysApi from 'shared/services/api';
 
@@ -32,8 +31,6 @@ export const HolidaysContext = createContext({} as HolidaysContextProps);
 export const HolidaysContextProvider = ({
 	children
 }: HolidaysContextProviderProps) => {
-	const navigate = useNavigate();
-
 	// States
 	const [date, setDate] = useState<Date>(new Date());
 	const [holidays, setHolidays] = useState<HolidaysType>([]);

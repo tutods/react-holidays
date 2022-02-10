@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { HolidayType } from 'shared/@types/Holidays';
 import useHolidays from 'shared/hooks/useHolidays';
 
-const HolidaysList = ({ ...props }) => {
+const HolidaysList = () => {
 	const navigate = useNavigate();
 
 	//const { date, holidays, changeDate } = useContext(HolidaysContext);
