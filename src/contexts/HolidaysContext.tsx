@@ -47,6 +47,7 @@ export const HolidaysContextProvider = ({
 
 				setHolidays(data);
 			}
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			if (error.response.status === 404) {
 				console.log('REDIRECT TO 404');
@@ -62,8 +63,9 @@ export const HolidaysContextProvider = ({
 	}, [getHolidays]);
 
 	const changeDate = (newDate: Date | null) => {
-		console.log(newDate);
-		setDate(newDate!);
+		if (newDate) {
+			setDate(newDate);
+		}
 	};
 
 	const handlerChangeCountry = (value: string) => setCountry(value);
