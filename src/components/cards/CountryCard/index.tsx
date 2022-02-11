@@ -1,5 +1,5 @@
 import { Card, CardContent, Stack, SxProps, Typography } from '@mui/material';
-import { getName } from 'country-list';
+import { getName, getCode } from 'country-list';
 import { Link } from 'react-router-dom';
 import { FlagIcon } from './styles';
 
