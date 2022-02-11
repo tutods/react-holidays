@@ -53,9 +53,7 @@ export const HolidaysContextProvider = ({
 
 			console.log(error);
 		}
-
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [date]);
+	}, [date, country]);
 
 	useEffect(() => {
 		getHolidays();
