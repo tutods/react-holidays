@@ -25,7 +25,7 @@ const HolidaysCountry = () => {
 				component={'h1'}
 				sx={{ fontWeight: 'bold' }}
 			>
-				{getName(country && country)}
+				{country && getName(country)}
 			</Typography>
 
 			<HolidaysList />
