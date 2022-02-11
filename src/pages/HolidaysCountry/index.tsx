@@ -15,6 +15,7 @@ const HolidaysCountry = () => {
 		if (country) {
 			handlerChangeCountry(country);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -24,7 +25,7 @@ const HolidaysCountry = () => {
 				component={'h1'}
 				sx={{ fontWeight: 'bold' }}
 			>
-				{getName(country!)}
+				{getName(country && country)}
 			</Typography>
 
 			<HolidaysList />

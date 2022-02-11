@@ -9,7 +9,7 @@ import { HolidayType } from 'shared/@types/Holidays';
 const HolidaysList = () => {
 	const navigate = useNavigate();
 
-	const { date, holidays, changeDate } = useContext(HolidaysContext);
+	const { holidays } = useContext(HolidaysContext);
 
 	const handlerBackBtnClick = () => navigate(-1);
 

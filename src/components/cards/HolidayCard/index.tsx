@@ -17,7 +17,7 @@ const HolidayCard = ({ holiday, sx, ...props }: Props) => {
 		borderStyle: 'solid',
 		borderColor:
 			format(parseISO(holiday.date), 'yyyy-MM-dd') ===
-			format(date!, 'yyyy-MM-dd')
+			format(date && date, 'yyyy-MM-dd')
 				? 'primary.main'
 				: 'transparent',
 		py: 2,

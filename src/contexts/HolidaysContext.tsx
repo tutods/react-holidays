@@ -38,13 +38,15 @@ export const HolidaysContextProvider = ({
 
 	const getHolidays = useCallback(async () => {
 		try {
-			const { data } = await holidaysApi.get<HolidaysType>(
-				`${getYear(date!)}/${country.toUpperCase()}`
-			);
+			if (date) {
+				const { data } = await holidaysApi.get<HolidaysType>(
+					`${getYear(date)}/${country.toUpperCase()}`
+				);
 
-			console.log(data);
+				console.log(data);
 
-			setHolidays(data);
+				setHolidays(data);
+			}
 		} catch (error: any) {
 			if (error.response.status === 404) {
 				console.log('REDIRECT TO 404');
@@ -52,6 +54,7 @@ export const HolidaysContextProvider = ({
 
 			console.log(error);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [date]);
 
 	useEffect(() => {
