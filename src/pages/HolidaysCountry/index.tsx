@@ -11,6 +11,10 @@ const HolidaysCountry = () => {
 
 	const { country } = useParams();
 
+	// Scroll page to the top
+	useEffect(() => window.scrollTo(0, 0), []);
+
+	// Change the Country on context
 	useEffect(() => {
 		if (country) {
 			handlerChangeCountry(country);
