@@ -43,11 +43,9 @@ export const HolidaysContextProvider = ({
 					`${getYear(date)}/${country.toUpperCase()}`
 				);
 
-				console.log(data);
-
 				setHolidays(data);
 			}
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			if (error.response.status === 404) {
 				console.log('REDIRECT TO 404');
@@ -55,6 +53,7 @@ export const HolidaysContextProvider = ({
 
 			console.log(error);
 		}
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [date]);
 
