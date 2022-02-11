@@ -66,13 +66,14 @@
 	},
 	"lint-staged": {
 		"*.{js,ts,json,scss,css,md,html,json,tsx,jsx}": [
-			"prettier --write ."
+			"prettier --write .",
+			"eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
+			"git add ."
 		]
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "echo \"[Husky | Format]\" && lint-staged",
-			"pre-push": "echo \"[Husky | Linting]\" && ng lint"
+			"pre-commit": "echo \"[Format & Lint]\" && lint-staged"
 		}
 	}
 }
