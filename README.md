@@ -25,7 +25,6 @@
 <br />
 <br />
 
-
 <h2 style="font-weight:300">How to fix <strong>Husky</strong> to run hooks:</h2>
 
 In `package.json` add on scripts (verify if already exists):
