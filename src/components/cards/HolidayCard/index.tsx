@@ -1,7 +1,8 @@
 import { Card, CardContent, SxProps, Typography } from '@mui/material';
+import { HolidaysContext } from 'contexts/HolidaysContext';
 import { format, parseISO } from 'date-fns';
+import { useContext } from 'react';
 import { HolidayType } from 'shared/@types/Holidays';
-import useHolidays from 'shared/hooks/useHolidays';
 
 type Props = {
 	holiday: HolidayType;
@@ -9,8 +10,7 @@ type Props = {
 };
 
 const HolidayCard = ({ holiday, sx, ...props }: Props) => {
-	//const { date } = useContext(HolidaysContext);
-	const { date, changeDate } = useHolidays();
+	const { date } = useContext(HolidaysContext);
 
 	const cardStyle = {
 		borderWidth: 2,
@@ -22,8 +22,7 @@ const HolidayCard = ({ holiday, sx, ...props }: Props) => {
 				: 'transparent',
 		py: 2,
 		borderRadius: 2,
-		boxShadow: 3,
-		cursor: 'pointer'
+		boxShadow: 3
 	};
 
 	return (
@@ -33,7 +32,6 @@ const HolidayCard = ({ holiday, sx, ...props }: Props) => {
 				...sx,
 				...cardStyle
 			}}
-			onClick={() => changeDate(parseISO(holiday.date))}
 		>
 			<CardContent>
 				<Typography

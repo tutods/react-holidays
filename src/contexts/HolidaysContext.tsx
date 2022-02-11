@@ -18,7 +18,7 @@ export type HolidaysContextProps = {
 
 	changeDate: (newDate: Date | null) => void;
 
-	changeCountry: (country: string) => void;
+	handlerChangeCountry: (value: string) => void;
 };
 
 type HolidaysContextProviderProps = {
@@ -41,6 +41,9 @@ export const HolidaysContextProvider = ({
 			const { data } = await holidaysApi.get<HolidaysType>(
 				`${getYear(date!)}/${country.toUpperCase()}`
 			);
+
+			console.log(data);
+
 			setHolidays(data);
 		} catch (error: any) {
 			if (error.response.status === 404) {
@@ -49,7 +52,7 @@ export const HolidaysContextProvider = ({
 
 			console.log(error);
 		}
-	}, [date, country]);
+	}, [date]);
 
 	useEffect(() => {
 		getHolidays();
@@ -60,11 +63,17 @@ export const HolidaysContextProvider = ({
 		setDate(newDate!);
 	};
 
-	const changeCountry = (country: string) => setCountry(country);
+	const handlerChangeCountry = (value: string) => setCountry(value);
 
 	return (
 		<HolidaysContext.Provider
-			value={{ date, holidays, country, changeDate, changeCountry }}
+			value={{
+				date,
+				holidays,
+				country,
+				changeDate,
+				handlerChangeCountry
+			}}
 		>
 			{children}
 		</HolidaysContext.Provider>

@@ -1,17 +1,15 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { DatePicker, LocalizationProvider } from '@mui/lab';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import { Box, Button, Stack, TextField } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import HolidayCard from 'components/cards/HolidayCard';
+import { HolidaysContext } from 'contexts/HolidaysContext';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HolidayType } from 'shared/@types/Holidays';
-import useHolidays from 'shared/hooks/useHolidays';
 
 const HolidaysList = () => {
 	const navigate = useNavigate();
 
-	//const { date, holidays, changeDate } = useContext(HolidaysContext);
-	const { date, holidays, changeDate } = useHolidays();
+	const { date, holidays, changeDate } = useContext(HolidaysContext);
 
 	const handlerBackBtnClick = () => navigate(-1);
 
@@ -24,7 +22,7 @@ const HolidaysList = () => {
 				justifyContent={'space-between'}
 				sx={{ textAlign: 'center', my: 4 }}
 			>
-				<LocalizationProvider dateAdapter={AdapterDateFns}>
+				{/* <LocalizationProvider dateAdapter={AdapterDateFns}>
 					<DatePicker
 						views={['year', 'month', 'day']}
 						value={date}
@@ -32,7 +30,7 @@ const HolidaysList = () => {
 						renderInput={(params) => <TextField {...params} />}
 						inputFormat={'dd/MM/yyyy'}
 					/>
-				</LocalizationProvider>
+				</LocalizationProvider> */}
 
 				<Button
 					onClick={handlerBackBtnClick}
