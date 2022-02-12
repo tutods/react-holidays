@@ -46,10 +46,10 @@ module.exports = {
 		new CleanWebpackPlugin()
 	],
 	devServer: {
-		static: path.join(__dirname, './src'),
-		port: 3001,
-		hot: 'only',
+		historyApiFallback: true,
+		static: path.resolve(__dirname, './dist'),
+		open: true,
 		compress: true,
-		open: true
+		hot: true
 	}
 };
