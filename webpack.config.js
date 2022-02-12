@@ -48,10 +48,10 @@ module.exports = {
 	],
 	devServer: {
 		historyApiFallback: true,
-		static: path.resolve(__dirname, './dist'),
 		port: 3000,
 		open: true,
 		compress: true,
-		hot: true
+		hot: true,
+		static: path.join(__dirname, 'public')
 	}
 };
