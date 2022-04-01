@@ -1,7 +1,7 @@
 import { Card, CardContent, Stack, SxProps, Typography } from '@mui/material';
 import { getName } from 'country-list';
 import { Link } from 'react-router-dom';
-import { FlagIcon } from './styles';
+import { cardStyle, FlagIcon } from './styles';
 
 type Props = {
 	countryCode: string;
@@ -9,23 +9,6 @@ type Props = {
 };
 
 const CountryCard = ({ countryCode, sx, ...props }: Props) => {
-	const cardStyle = {
-		borderWidth: 2,
-		borderStyle: 'solid',
-		borderColor: 'transparent',
-		py: 2,
-		borderRadius: 2,
-		boxShadow: 3,
-		cursor: 'pointer',
-		textDecoration: 'none',
-		transition: 'border-color 0.25s ease-in-out',
-		height: '100%',
-
-		'&:hover': {
-			borderColor: 'primary.main'
-		}
-	};
-
 	return (
 		<Card
 			{...props}
